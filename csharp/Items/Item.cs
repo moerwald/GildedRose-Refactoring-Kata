@@ -1,4 +1,4 @@
-﻿namespace csharp
+﻿namespace csharp.Items
 {
 
     public sealed class Item
