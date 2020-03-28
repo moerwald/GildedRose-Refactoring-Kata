@@ -8,6 +8,7 @@ namespace csharp.test.GildedRose.Quality.Increment.TestCaseData
     public class QualityIncrement
     {
         [Test]
+        [Description("Aged Brie actually increases in Quality the older it gets")]
         public void AgedBrie_Quality_Increases_Over_Time()
         {
             const int SellIn = 8;
@@ -34,6 +35,16 @@ namespace csharp.test.GildedRose.Quality.Increment.TestCaseData
                 quality += qualityIncrement;
                 Assert.AreEqual(quality, (int)Items[0].Quality);
             });
+        }
+
+
+        [Test]
+        [Description("The Quality of an item is never more than 50")]
+        public void Quality_Never_Increases_Over_50()
+        {
+            var quality = new csharp.Quality(50);
+            ++quality;
+            Assert.That(quality.Equals(50));
         }
 
     }

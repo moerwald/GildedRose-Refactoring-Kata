@@ -30,5 +30,16 @@ namespace csharp.test.GildedRose.Quality.Decrement.TestCaseData
                 Assert.AreEqual(actQuality, (int)Items[0].Quality);
             });
         }
+
+        [Test]
+        [Description("The Quality of an item is never negative")]
+        public void Quality_Of_An_Item_Never_Gets_Negative()
+        {
+            var quality = new csharp.Quality(1);
+
+            --quality;
+            --quality;
+            Assert.That(quality.Equals(0));
+        }
     }
 }

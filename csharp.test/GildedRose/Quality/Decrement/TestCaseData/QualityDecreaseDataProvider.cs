@@ -14,13 +14,13 @@ namespace csharp.test.GildedRose.Quality.Decrement.TestCaseData
                     50, 
                     8, 
                     "Sulfuras, Hand of Ragnaros",
-                    "Sulfuras quality never decreases");
+                    "Sulfuras, being a legendary item, never has to be sold or decreases in Quality");
                 yield return new SpecialQualityDecrease(
                     (quality) => quality - 2,
                     50,
                     0,
                     "Some item",
-                    "Quality Shall Degrade Twice As Fast After SellIn Has Passed"); 
+                    "Once the sell by date has passed, Quality degrades twice as fast"); 
                 yield return new SpecialQualityDecrease(
                     (quality) => 0,
                     50,

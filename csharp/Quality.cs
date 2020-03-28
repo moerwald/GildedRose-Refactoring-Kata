@@ -22,9 +22,9 @@ namespace csharp
         public static int operator -(Quality a, Quality b) => new Quality(a.Value - b.Value).Value;
 
         public static Quality operator --(Quality quality)
-            => new Quality(--quality.Value < 0 ? quality.Value : 0);
+            => new Quality(--quality.Value < 0 ? 0 :  quality.Value );
         public static Quality operator ++(Quality quality)
-            => new Quality(++quality.Value);
+            => new Quality(++quality.Value > 50 ? 50 : quality.Value);
 
         public static implicit operator int(Quality quality) => quality.Value;
 
