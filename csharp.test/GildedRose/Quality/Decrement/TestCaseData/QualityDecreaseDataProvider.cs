@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 
 namespace csharp.test.GildedRose.Quality.Decrement.TestCaseData
 {
