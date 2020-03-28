@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace csharp
 {
@@ -38,19 +41,24 @@ namespace csharp
             };
 
             var app = new GildedRose(Items);
+            var logger = new ItemLogger(
+                new List<Item>(Items),
+                new OutputWriter());
 
-
-            for (var i = 0; i < 31; i++)
-            {
-                Console.WriteLine("-------- day " + i + " --------");
-                Console.WriteLine("name, sellIn, quality");
-                for (var j = 0; j < Items.Count; j++)
-                {
-                    System.Console.WriteLine(Items[j]);
-                }
-                Console.WriteLine("");
-                app.UpdateQuality();
-            }
+            ForeachDay(
+                day => logger.DumpAllItemsForDay(day),
+                () => app.UpdateQuality());
         }
+
+        private static void ForeachDay(
+            Action<int> dumpAllItems,
+            Action updateQuality
+            )
+            =>
+            Enumerable.Range(0, 31).ToList().ForEach(d =>
+             {
+                 dumpAllItems(d);
+                 updateQuality();
+             });
     }
 }
