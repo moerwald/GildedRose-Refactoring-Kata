@@ -7,24 +7,27 @@ namespace csharp
         private int Value { get; set; }
 
         private const int MinQuality = -1;
-        private const int MaxQuality = 81;
-        public Quality(int initialValue)
-        => Value = initialValue < MinQuality
-            ? throw new ArgumentException($"{nameof(initialValue)} must be > {MinQuality}. Act value: {initialValue}")
-            : initialValue > MaxQuality
-                ? throw new ArgumentException($"{nameof(initialValue)} must be < {MaxQuality}")
-                : initialValue;
+        private int MaxQuality;
 
-        // Below operators can bre removed after refactoring
-        public static int operator +(Quality a, int b) => new Quality(a.Value + b).Value;
-        public static int operator -(Quality a, int b) => new Quality(Math.Max(a.Value - b, 0)).Value;
-        public static int operator -(int a, Quality b) => new Quality(a - b.Value).Value;
-        public static int operator -(Quality a, Quality b) => new Quality(Math.Max(a.Value - b.Value, 0) ).Value;
+        public Quality(int initialValue, int maxQuality)
+        {
+            MaxQuality = maxQuality + 1;
+            Value = initialValue < MinQuality
+                ? throw new ArgumentException($"{nameof(initialValue)} must be > {MinQuality}. Act value: {initialValue}")
+                : initialValue > MaxQuality
+                    ? throw new ArgumentException($"{nameof(initialValue)} must be < {MaxQuality}")
+                    : initialValue;
+        }
+
+        public Quality(int initialValue)
+            : this(initialValue, 50)
+        {
+        }
 
         public static Quality operator --(Quality quality)
-            => new Quality(--quality.Value < 0 ? 0 :  quality.Value );
+            => new Quality(--quality.Value < 0 ? 0 : quality.Value);
         public static Quality operator ++(Quality quality)
-            => new Quality(++quality.Value > 50 ? 50 : quality.Value);
+            => new Quality(++quality.Value >= 50 ? 50 : quality.Value);
 
         public static implicit operator int(Quality quality) => quality.Value;
 

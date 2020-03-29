@@ -8,6 +8,7 @@
 
         protected override void HandleExecute(Item item)
         {
+#if useOldCode
             if (item.SellIn < 0)
             {
                 if (item.Name != "Aged Brie")
@@ -36,6 +37,7 @@
                 }
 
             }
+#endif
         }
     }
 }

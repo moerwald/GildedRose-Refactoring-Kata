@@ -9,16 +9,67 @@ namespace csharp.Items
 {
     public class ItemGroup : IItem
     {
-        private IEnumerable<Item> Items { get;  }
+        private IEnumerable<Item> Items { get; }
 
         public ItemGroup(IEnumerable<Item> items)
         {
             Items = items;
         }
 
-        public void Update(IUpdateRule rule) 
+        public void Update(IUpdateRule rule)
         {
-            foreach (var item in this.Items) item.Update(rule);
+            foreach (var item in this.Items)
+            {
+                if (item.Name == "Sulfuras, Hand of Ragnaros")
+                {
+                    continue;
+                }
+
+                // SellIn not reached
+                if (item.Name == "Aged Brie")
+                {
+                    // Either Aged Brie or Backstage pass
+                    ++item.Quality;
+
+                    --item.SellIn;
+
+                    if (item.SellIn < 0)
+                    {
+                        ++item.Quality;
+                    }
+
+                }
+                else if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
+                {
+                    // Either Aged Brie or Backstage pass
+                    ++item.Quality;
+
+                    if (item.SellIn < 11)
+                    {
+                        ++item.Quality;
+                    }
+
+                    if (item.SellIn < 6)
+                    {
+                        ++item.Quality;
+                    }
+
+                    --item.SellIn;
+
+                    if (item.SellIn < 0)
+                    {
+                        item.Quality = 0;
+                    }
+                }
+                else
+                {
+                    // Any other item
+                    --item.Quality;
+                    --item.SellIn;
+                    if (item.SellIn < 0)
+                        --item.Quality;
+                }
+            }
         }
     }
 }

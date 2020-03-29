@@ -8,6 +8,7 @@
 
         protected override void HandleExecute(Item item)
         {
+#if useOldCode
             if (item.Quality >= 50) return;
 
             item.Quality++;
@@ -28,6 +29,7 @@
                     item.Quality += 1;
                 }
             }
+#endif
         }
     }
 }
