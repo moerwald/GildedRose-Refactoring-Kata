@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using csharp.Items;
-using csharp.Items.Rules.Factories;
+﻿using csharp.Items;
 
 namespace csharp
 {

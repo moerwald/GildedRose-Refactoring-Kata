@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Dynamic;
 
 namespace csharp.Items.Rules
 {
     public class DoNothingRule : IUpdateRule
     {
-        private static DoNothingRule instance;
-        public static DoNothingRule Instance => instance ?? (instance = new DoNothingRule());
+        private static DoNothingRule _instance;
+        public static DoNothingRule Instance => _instance ?? (_instance = new DoNothingRule());
 
         public Action<Item> GetRule(Item item) => i => { };
     }

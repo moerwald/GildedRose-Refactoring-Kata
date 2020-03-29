@@ -7,9 +7,9 @@ namespace csharp
         private int Value { get; set; }
 
         private const int MinQuality = -1;
-        private int MaxQuality;
+        private readonly int MaxQuality;
 
-        public Quality(int initialValue, int maxQuality)
+        public Quality(int initialValue, int maxQuality = 50)
         {
             MaxQuality = maxQuality + 1;
             Value = initialValue < MinQuality
@@ -17,11 +17,6 @@ namespace csharp
                 : initialValue > MaxQuality
                     ? throw new ArgumentException($"{nameof(initialValue)} must be < {MaxQuality}")
                     : initialValue;
-        }
-
-        public Quality(int initialValue)
-            : this(initialValue, 50)
-        {
         }
 
         public static Quality operator --(Quality quality)

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using csharp.Items.Rules;
 
 namespace csharp.Items
@@ -18,7 +15,7 @@ namespace csharp.Items
             Rule = rule;
         }
 
-        public void Update() => this.Items.ToList().ForEach(i => Rule.GetRule(i) .Invoke(i) );
+        public void Update() => this.Items.ToList().ForEach(i => Rule.GetRule(i).Invoke(i) );
     }
 }
 
