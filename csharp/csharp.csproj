@@ -71,7 +71,6 @@
     <Compile Include="Items\Rules\DoNothingRule.cs" />
     <Compile Include="Items\Rules\Factories\CreateDefaultRules.cs" />
     <Compile Include="Items\Rules\IUpdateRule.cs" />
-    <Compile Include="Items\Rules\DummyRule.cs" />
     <Compile Include="Items\Rules\ChainableUpdateRule.cs" />
     <Compile Include="OutputWriter.cs" />
     <Compile Include="Program.cs" />
