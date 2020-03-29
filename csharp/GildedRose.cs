@@ -11,15 +11,9 @@ namespace csharp
     {
         private ItemGroup Items { get; }
 
-        public GildedRose(ItemGroup items)
-        {
-            Items = items;
-        }
+        public GildedRose(ItemGroup items) => Items = items; 
 
 
-        public void UpdateQuality()
-        {
-            this.Items.Update(CreateDefaultRules.Create());
-        }
+        public void UpdateQuality() => this.Items.Update();
     }
 }

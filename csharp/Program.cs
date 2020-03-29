@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using csharp.Items;
+using csharp.Items.Rules.Factories;
 
 namespace csharp
 {
@@ -14,7 +15,7 @@ namespace csharp
             var Items = ItemFactory.Instance.Create();
 
             var enumerable = Items.ToList();
-            var app = new GildedRose( new ItemGroup(enumerable));
+            var app = new GildedRose( new ItemGroup(enumerable, CreateDefaultRules.Create()));
             var logger = new ItemLogger(
                 new List<Item>(enumerable),
                 new OutputWriter());

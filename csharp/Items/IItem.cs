@@ -4,6 +4,6 @@ namespace csharp.Items
 {
     public interface IItem
     {
-        void Update(IUpdateRule rule);
+        void Update();
     }
 }
