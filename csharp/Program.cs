@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using csharp.Items;
 
 namespace csharp
@@ -15,9 +13,10 @@ namespace csharp
 
             var Items = ItemFactory.Instance.Create();
 
-            var app = new GildedRose(Items);
+            var enumerable = Items.ToList();
+            var app = new GildedRose( new ItemGroup(enumerable));
             var logger = new ItemLogger(
-                new List<Item>(Items),
+                new List<Item>(enumerable),
                 new OutputWriter());
 
             ForeachDay(

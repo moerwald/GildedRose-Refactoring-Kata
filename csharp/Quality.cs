@@ -4,22 +4,22 @@ namespace csharp
 {
     public sealed class Quality : IEquatable<Quality>
     {
-        public int Value { get; private set; }
+        private int Value { get; set; }
 
-        private const int MinQuality = 0;
-        private const int MaxQuality = 80;
-        public Quality(int initalValue)
-        => Value = initalValue < MinQuality
-            ? throw new ArgumentException($"{nameof(initalValue)} must be > {MinQuality}")
-            : initalValue > MaxQuality
-                ? throw new ArgumentException($"{nameof(initalValue)} must be < {MaxQuality}")
-                : initalValue;
+        private const int MinQuality = -1;
+        private const int MaxQuality = 81;
+        public Quality(int initialValue)
+        => Value = initialValue < MinQuality
+            ? throw new ArgumentException($"{nameof(initialValue)} must be > {MinQuality}. Act value: {initialValue}")
+            : initialValue > MaxQuality
+                ? throw new ArgumentException($"{nameof(initialValue)} must be < {MaxQuality}")
+                : initialValue;
 
         // Below operators can bre removed after refactoring
         public static int operator +(Quality a, int b) => new Quality(a.Value + b).Value;
-        public static int operator -(Quality a, int b) => new Quality(a.Value - b).Value;
+        public static int operator -(Quality a, int b) => new Quality(Math.Max(a.Value - b, 0)).Value;
         public static int operator -(int a, Quality b) => new Quality(a - b.Value).Value;
-        public static int operator -(Quality a, Quality b) => new Quality(a.Value - b.Value).Value;
+        public static int operator -(Quality a, Quality b) => new Quality(Math.Max(a.Value - b.Value, 0) ).Value;
 
         public static Quality operator --(Quality quality)
             => new Quality(--quality.Value < 0 ? 0 :  quality.Value );

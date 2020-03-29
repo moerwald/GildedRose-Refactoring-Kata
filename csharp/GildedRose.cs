@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using csharp.Items;
+﻿using csharp.Items;
+using csharp.Items.Rules.Factories;
 
 namespace csharp
 {
@@ -7,12 +7,17 @@ namespace csharp
 
     public class GildedRose
     {
-        IEnumerable<Item> Items;
-        public GildedRose(IEnumerable<Item> Items) => this.Items = Items;
+        public GildedRose(ItemGroup items)
+        {
+            this.Items = items;
+        }
 
+        private ItemGroup Items { get; }
 
         public void UpdateQuality()
         {
+            this.Items.Update(CreateDefaultRules.Create());
+#if UseOldCode
             //            this.Items.Update();
 
             foreach (var item in this.Items)
@@ -90,6 +95,7 @@ namespace csharp
                     }
                 }
             }
+#endif
         }
     }
 }

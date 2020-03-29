@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using csharp.Items;
+using csharp.test.GildedRose.Quality.Decrement.TestCaseData;
 
-namespace csharp.test.GildedRose.Quality.Decrement.TestCaseData
+namespace csharp.test.GildedRose.Quality.Decrement
 {
     [TestFixture]
     public class QualityDecrement
@@ -22,7 +23,7 @@ namespace csharp.test.GildedRose.Quality.Decrement.TestCaseData
             int actQuality = 0;
             
             IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = initalQuality } };
-            csharp.GildedRose app = new csharp.GildedRose(Items);
+            csharp.GildedRose app = new csharp.GildedRose(new ItemGroup(Items));
             Enumerable.Range(1, sellIn).ToList().ForEach(i =>
             {
                 app.UpdateQuality();
