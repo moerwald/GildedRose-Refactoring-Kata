@@ -7,11 +7,11 @@ namespace csharp
         private int Value { get; set; }
 
         private const int MinQuality = -1;
-        private readonly int MaxQuality;
+        private int MaxQuality { get; }
 
         public Quality(int initialValue, int maxQuality = 50)
         {
-            MaxQuality = maxQuality + 1;
+            MaxQuality = maxQuality ;
             Value = initialValue < MinQuality
                 ? throw new ArgumentException($"{nameof(initialValue)} must be > {MinQuality}. Act value: {initialValue}")
                 : initialValue > MaxQuality
@@ -22,7 +22,7 @@ namespace csharp
         public static Quality operator --(Quality quality)
             => new Quality(--quality.Value < 0 ? 0 : quality.Value);
         public static Quality operator ++(Quality quality)
-            => new Quality(++quality.Value >= 50 ? 50 : quality.Value);
+            => new Quality(++quality.Value >= quality.MaxQuality ? quality.MaxQuality : quality.Value);
 
         public static implicit operator int(Quality quality) => quality.Value;
 
@@ -30,16 +30,17 @@ namespace csharp
 
         public override string ToString() => this.Value.ToString();
 
-
         public override bool Equals(object other)
         {
-            if (other is Quality q)
-                return this.Equals(q);
-
-            if (other is int qInt)
-                return this.Equals(qInt);
-
-            return false;
+            switch (other)
+            {
+                case Quality q:
+                    return this.Equals(q);
+                case int qInt:
+                    return this.Equals(qInt);
+                default:
+                    return false;
+            }
         }
 
         public bool Equals(Quality other) =>
