@@ -1,9 +1,13 @@
-﻿namespace csharp.Items.Rules
+﻿using System;
+using System.Dynamic;
+
+namespace csharp.Items.Rules
 {
     public class DoNothingRule : IUpdateRule
     {
-        public void Execute(Item item)
-        {
-        }
+        private static DoNothingRule instance;
+        public static DoNothingRule Instance => instance ?? (instance = new DoNothingRule());
+
+        public Action<Item> GetRule(Item item) => i => { };
     }
 }

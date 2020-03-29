@@ -1,7 +1,9 @@
-﻿namespace csharp.Items.Rules
+﻿using System;
+
+namespace csharp.Items.Rules
 {
     public interface IUpdateRule
     {
-        void Execute(Item item);
+        Action<Item> GetRule(Item item);
     }
 }

@@ -15,7 +15,7 @@ namespace csharp.Items
 
         public void Update( IUpdateRule rule )
         {
-            rule.Execute(this);
+            rule.GetRule(this);
 #if useOldCode
             // SellIn not reached
             // Default quality decrement

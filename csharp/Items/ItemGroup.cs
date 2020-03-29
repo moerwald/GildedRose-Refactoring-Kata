@@ -18,6 +18,8 @@ namespace csharp.Items
 
         public void Update(IUpdateRule rule)
         {
+
+#if false
             foreach (var item in this.Items)
             {
                 if (item.Name == "Sulfuras, Hand of Ragnaros")
@@ -70,6 +72,13 @@ namespace csharp.Items
                         --item.Quality;
                 }
             }
+#else
+            _ = rule ?? throw new ArgumentNullException(nameof(rule));
+            this.Items.ToList().ForEach(i =>  rule.GetRule(i)
+                                                       .Invoke(i) );
+#endif
         }
     }
 }
+
+

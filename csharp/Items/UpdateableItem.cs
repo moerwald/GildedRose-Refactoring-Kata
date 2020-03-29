@@ -14,7 +14,7 @@ namespace csharp.Items
             _rule = rule;
         }
 
-        public void Update() => _rule.Execute();
+        public void Update() => _rule.GetRule();
     }
     */
 }

@@ -68,15 +68,10 @@
     <Compile Include="ItemFactory.cs" />
     <Compile Include="ItemLogger.cs" />
     <Compile Include="Items\ItemGroup.cs" />
-    <Compile Include="Items\Rules\ConditionalRule.cs" />
-    <Compile Include="Items\Rules\DefaultQualityDecrement.cs" />
-    <Compile Include="Items\Rules\DefaultQualityIncrement.cs" />
     <Compile Include="Items\Rules\DoNothingRule.cs" />
     <Compile Include="Items\Rules\Factories\CreateDefaultRules.cs" />
     <Compile Include="Items\Rules\IUpdateRule.cs" />
     <Compile Include="Items\Rules\DummyRule.cs" />
-    <Compile Include="Items\Rules\SellInDecrement.cs" />
-    <Compile Include="Items\Rules\SellInReached.cs" />
     <Compile Include="Items\UpdateableItem.cs" />
     <Compile Include="Items\Rules\ChainableUpdateRule.cs" />
     <Compile Include="OutputWriter.cs" />
