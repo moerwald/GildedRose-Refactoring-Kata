@@ -72,6 +72,10 @@
     <Compile Include="Items\Rules\Factories\CreateDefaultRules.cs" />
     <Compile Include="Items\Rules\IUpdateRule.cs" />
     <Compile Include="Items\Rules\ChainableUpdateRule.cs" />
+    <Compile Include="Items\Rules\UpdateAgedBrie.cs" />
+    <Compile Include="Items\Rules\UpdateBackStagePass.cs" />
+    <Compile Include="Items\Rules\UpdateDefaultImplementation.cs" />
+    <Compile Include="Items\Rules\UpdateSulfuras.cs" />
     <Compile Include="OutputWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
