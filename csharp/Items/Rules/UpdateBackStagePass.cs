@@ -14,15 +14,13 @@ namespace csharp.Items.Rules
             {
                 ++item.Quality;
 
-                if (item.SellIn < 11)
+                if (item.SellIn <= 10)
                 {
-                    // Item quality doubles if SellIn is <= 10
                     ++item.Quality;
                 }
 
-                if (item.SellIn < 6)
+                if (item.SellIn <= 5)
                 {
-                    // Item quality triples if SellIn is <= 5
                     ++item.Quality;
                 }
 
