@@ -4,7 +4,7 @@ using csharp.Items.Rules;
 
 namespace csharp.Items
 {
-    public class ItemGroup : IItem
+    public class ItemGroup 
     {
         private IEnumerable<Item> Items { get; }
         private IUpdateRule Rule { get; }
