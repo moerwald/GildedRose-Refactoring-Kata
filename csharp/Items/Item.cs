@@ -1,11 +1,12 @@
 ﻿using System;
+using csharp.Items.Rules;
 
 namespace csharp.Items
 {
     /// <summary>
     ///  Data object only, no behaviour
     /// </summary>
-    public sealed class Item : IEquatable<Item>
+    public class Item : IEquatable<Item>
     {
         public string Name { get; set; }
         public int SellIn { get; set; }
@@ -37,6 +38,5 @@ namespace csharp.Items
 
         public static bool operator !=(Item left, Item right) => !Equals(left, right);
     }
-
 }
 

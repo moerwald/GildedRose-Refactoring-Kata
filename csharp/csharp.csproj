@@ -63,7 +63,7 @@
   <ItemGroup>
     <Compile Include="GildedRose.cs" />
     <Compile Include="IOutputWriter.cs" />
-    <Compile Include="Items\IItem.cs" />
+    <Compile Include="Items\ConjuredItem.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="ItemFactory.cs" />
     <Compile Include="ItemLogger.cs" />
@@ -74,6 +74,7 @@
     <Compile Include="Items\Rules\ChainableUpdateRule.cs" />
     <Compile Include="Items\Rules\UpdateAgedBrie.cs" />
     <Compile Include="Items\Rules\UpdateBackStagePass.cs" />
+    <Compile Include="Items\Rules\UpdateConjuredItem.cs" />
     <Compile Include="Items\Rules\UpdateDefaultImplementation.cs" />
     <Compile Include="Items\Rules\UpdateSulfuras.cs" />
     <Compile Include="OutputWriter.cs" />

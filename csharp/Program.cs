@@ -15,7 +15,7 @@ namespace csharp
             var Items = ItemFactory.Instance.Create();
 
             var enumerable = Items.ToList();
-            var app = new GildedRose( new ItemGroup(enumerable, CreateDefaultRules.Create()));
+            var app = new GildedRose( new ItemGroup(enumerable, CreateDefaultRules.CreateWithConjuredRule()));
             var logger = new ItemLogger(
                 new List<Item>(enumerable),
                 new OutputWriter());

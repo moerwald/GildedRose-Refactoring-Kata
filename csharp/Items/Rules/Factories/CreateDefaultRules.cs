@@ -13,5 +13,8 @@
                         )
                     )
                 );
+
+        public static IUpdateRule CreateWithConjuredRule() => new UpdateConjuredItem(Create());
+
     }
 }
