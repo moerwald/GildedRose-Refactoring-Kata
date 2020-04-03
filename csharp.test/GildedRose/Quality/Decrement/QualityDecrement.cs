@@ -13,24 +13,23 @@ namespace csharp.test.GildedRose.Quality.Decrement
     {
         [TestCaseSource(typeof(QualityDecreaseDataProvider), nameof(QualityDecreaseDataProvider.TestCases))]
         public void Test_Special_Quality_Descrease(
-            Func<int, int> requriedQuality,
-            int initalQuality,
-            int sellIn,
-            string itemName,
+            Func<int, csharp.Quality> requiredQuality,
+            Item item,
             string testDescription)
         {
             Console.WriteLine(testDescription);
 
-            int actQuality = 0;
-            
-            IList<Item> Items = new List<Item> { new Item { Name = itemName, SellIn = sellIn, Quality = initalQuality } };
-            csharp.GildedRose app = new csharp.GildedRose(new ItemGroup(Items, CreateDefaultRules.Create()));
-            Enumerable.Range(1, sellIn).ToList().ForEach(i =>
+            var app = new csharp.GildedRose(
+                new ItemGroup(new List<Item>{item},
+                    CreateDefaultRules.CreateWithConjuredRule()));
+
+            var actQuality = new csharp.Quality(item.Quality);
+            Enumerable.Range(1, item.SellIn).ToList().ForEach(i =>
             {
                 app.UpdateQuality();
 
-                actQuality = requriedQuality(actQuality);
-                Assert.AreEqual(actQuality, (int)Items[0].Quality);
+                actQuality = requiredQuality(actQuality);
+                Assert.AreEqual(actQuality, (int)item.Quality);
             });
         }
 

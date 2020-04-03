@@ -2,7 +2,7 @@
 {
     public static class CreateDefaultRules
     {
-        public static IUpdateRule Create()
+        private static IUpdateRule Create()
         =>
             new UpdateSulfuras(
                 new UpdateAgedBrie(

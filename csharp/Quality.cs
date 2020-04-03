@@ -9,6 +9,12 @@ namespace csharp
         private const int MinQuality = -1;
         private int MaxQuality { get; }
 
+        public Quality(Quality q)
+        {
+            this.Value = q.Value;
+            this.MaxQuality = q.MaxQuality;
+        }
+
         public Quality(int initialValue, int maxQuality = 50)
         {
             MaxQuality = maxQuality ;
@@ -26,7 +32,7 @@ namespace csharp
 
         public static implicit operator int(Quality quality) => quality.Value;
 
-        public static implicit operator Quality(int quality) => new Quality(quality);
+        public static implicit operator Quality(int quality) => new Quality(quality < 0 ? 0 : quality);
 
         public override string ToString() => this.Value.ToString();
 

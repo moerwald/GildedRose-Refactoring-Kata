@@ -12,6 +12,7 @@ namespace csharp.Items
         public int SellIn { get; set; }
         public Quality Quality { get; set; }
 
+
         public override string ToString() => this.Name + ", " + this.SellIn + ", " + this.Quality;
 
         public bool Equals(Item other)

@@ -16,10 +16,11 @@ namespace csharp.Items.Rules
                 --item.Quality;
 
                 --item.SellIn;
-                if (item.SellIn < 0)
-                {
-                    --item.Quality;
-                }
+
+                if (item.SellIn >= 0) return;
+                
+                --item.Quality;
+                --item.Quality;
             };
 
     }
