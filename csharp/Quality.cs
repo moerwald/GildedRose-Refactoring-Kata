@@ -9,12 +9,6 @@ namespace csharp
         private const int MinQuality = -1;
         private int MaxQuality { get; }
 
-        public Quality(Quality q)
-        {
-            this.Value = q.Value;
-            this.MaxQuality = q.MaxQuality;
-        }
-
         public Quality(int initialValue, int maxQuality = 50)
         {
             MaxQuality = maxQuality ;
